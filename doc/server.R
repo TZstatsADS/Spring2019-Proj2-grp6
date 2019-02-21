@@ -106,8 +106,22 @@ shinyServer(function(input, output,session) {
     
     df_route <- data.frame(route = res$routes$overview_polyline$points)
     
-    google_map(key = map_key ) %>%
-      add_polylines(data = df_route, polyline = "route")
+    if(input$way=='transit'){
+      google_map(key = map_key ) %>%
+        add_polylines(data = df_route, polyline = "route") %>%
+        add_transit()
+    }else if(input$way=='driving'){
+      google_map(key = map_key ) %>%
+        add_polylines(data = df_route, polyline = "route") %>%
+        add_traffic()
+    }else if(input$way=='bicycling'){
+        google_map(key = map_key ) %>%
+          add_polylines(data = df_route, polyline = "route") %>%
+          add_bicycling()
+      }else{
+        google_map(key = map_key ) %>%
+          add_polylines(data = df_route, polyline = "route")
+      }
   })
   
 })
