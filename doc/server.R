@@ -1,6 +1,6 @@
 
 library(shiny)
-library(leaflet.extras)
+library(shinyWidgets)
 restaurant <- read.csv("/Users/Yunhao/Desktop/shiny_app/data/restaurant_NYC.csv",as.is = T)
 crime <- read.csv("/Users/Yunhao/Desktop/shiny_app/data/Crime_Hour.csv")
 
@@ -31,13 +31,8 @@ shinyServer(function(input, output,session) {
 
     
     data1 <-reactive({
-      if (price == "All"){
-        restaurant[restaurant$categories == category & restaurant$rating >= rate,]
-      }else{
-        restaurant[restaurant$categories == category & restaurant$price == price &
+        restaurant[restaurant$categories == category & restaurant$price %in% price &
                      restaurant$rating >= rate,]
-      }
-      
     })
     
     data3 <- reactive({
@@ -74,10 +69,18 @@ shinyServer(function(input, output,session) {
         addMarkers(data =points_crime(),popup = paste("<B>",data2()$LAW_CAT_CD,"</B>"),clusterOptions = markerClusterOptions(),icon = crime_icon,group = "Crime")
     })
   })
+  
+  observeEvent(input$direction,{
+    newvalue <- "Direction"
+    updateTabItems(session, "panels", newvalue)
+    x <- input$name
+    updateTextInput(session,"destination",value = paste(x))
+  })
+  
 # TAB 2
-
-  api_key <- "AIzaSyC_yBRuteiVlRtQ3qjlBZgnc4SUZQ8bupw"
-  map_key <- "AIzaSyC_yBRuteiVlRtQ3qjlBZgnc4SUZQ8bupw"
+  
+  api_key <- "AIzaSyDNdgYMWSv6AcQcybMsVdC0HrnJEtfBsOA"
+  map_key <- "AIzaSyDNdgYMWSv6AcQcybMsVdC0HrnJEtfBsOA"
   
   df_route <- eventReactive(input$getRoute,{
     
@@ -101,7 +104,7 @@ shinyServer(function(input, output,session) {
       , origin = df$origin
       , destination = df$destination
       , mode = df$mode 
-      , alternatives = TRUE
+      , alternatives = FALSE
     )
     
     df_route <- data.frame(route = res$routes$overview_polyline$points)
