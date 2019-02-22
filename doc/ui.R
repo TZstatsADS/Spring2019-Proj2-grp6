@@ -2,7 +2,7 @@ library(leaflet)
 library(shiny)
 library(googleway)
 library(shinyWidgets)
-
+library(shinydashboard)
 
 restaurant <- read.csv("/Users/Yunhao/Desktop/shiny_app/data/restaurant_NYC.csv",as.is = T)
 
