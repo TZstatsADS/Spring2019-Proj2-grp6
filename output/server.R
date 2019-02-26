@@ -105,7 +105,7 @@ shinyServer(function(input, output,session) {
     t <- input$transit_mode
     p <- input$prefer
     
-    return(data.frame(origin = o, destination = d, mode = w ,stringsAsFactors = F))
+    return(data.frame(origin = o, destination = d, mode = w, avoid = a, prefer = p, transit_mode=t ,stringsAsFactors = F))
   })
   output$myMap <- renderGoogle_map({
     
