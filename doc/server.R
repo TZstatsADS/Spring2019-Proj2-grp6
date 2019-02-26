@@ -1,3 +1,12 @@
+#
+# This is the server logic of a Shiny web application. You can run the 
+# application by clicking 'Run App' above.
+#
+# Find out more about building applications with Shiny here:
+# 
+#    http://shiny.rstudio.com/
+#
+
 library(leaflet)
 library(shiny)
 library(googleway)
@@ -14,8 +23,8 @@ crime_icon <- makeIcon(
 
 
 shinyServer(function(input, output,session) {
-
-# TAB 1
+  
+  # TAB 1
   output$map <- renderLeaflet({
     leaflet() %>%
       addProviderTiles(providers$Esri.WorldTopoMap,
@@ -31,11 +40,11 @@ shinyServer(function(input, output,session) {
     rate = input$Box3
     crime_time = input$Box5
     violated = input$Box4
-
+    
     
     data1 <-reactive({
-        restaurant[restaurant$categories == category & restaurant$price %in% price &
-                     restaurant$rating >= rate,]
+      restaurant[restaurant$categories == category & restaurant$price %in% price &
+                   restaurant$rating >= rate,]
     })
     
     data3 <- reactive({
@@ -80,10 +89,10 @@ shinyServer(function(input, output,session) {
     updateTextInput(session,"destination",value = paste(x))
   })
   
-# TAB 2
+  # TAB 2
   
-  api_key <- "AIzaSyDNdgYMWSv6AcQcybMsVdC0HrnJEtfBsOA"
-  map_key <- "AIzaSyDNdgYMWSv6AcQcybMsVdC0HrnJEtfBsOA"
+  api_key <- "AIzaSyCIbMSl4ey6gxtalI71vGBOjhKXVcCjOLY"
+  map_key <- "AIzaSyCIbMSl4ey6gxtalI71vGBOjhKXVcCjOLY"
   
   df_route <- eventReactive(input$getRoute,{
     
@@ -112,22 +121,36 @@ shinyServer(function(input, output,session) {
     
     df_route <- data.frame(route = res$routes$overview_polyline$points)
     
+    start<- google_geocode(address = df$origin,
+                           key = map_key,
+                           simplify = TRUE)$results$geometry$location
+    start$address<-df$origin
+    end<- google_geocode(address = df$destination,
+                         key = map_key,
+                         simplify = TRUE)$results$geometry$location
+    end$address<-df$destination
+    c<-rbind(start,end)
+    
     if(input$way=='transit'){
       google_map(key = map_key ) %>%
         add_polylines(data = df_route, polyline = "route") %>%
-        add_transit()
+        add_transit() %>%
+        add_markers(data=c,lat='lat',lon='lng',mouse_over='address') 
     }else if(input$way=='driving'){
       google_map(key = map_key ) %>%
         add_polylines(data = df_route, polyline = "route") %>%
-        add_traffic()
+        add_traffic() %>%
+        add_markers(data=c,lat='lat',lon='lng',mouse_over='address') 
     }else if(input$way=='bicycling'){
-        google_map(key = map_key ) %>%
-          add_polylines(data = df_route, polyline = "route") %>%
-          add_bicycling()
-      }else{
-        google_map(key = map_key ) %>%
-          add_polylines(data = df_route, polyline = "route")
-      }
+      google_map(key = map_key ) %>%
+        add_polylines(data = df_route, polyline = "route") %>%
+        add_bicycling() %>%
+        add_markers(data=c,lat='lat',lon='lng',mouse_over='address') 
+    }else{
+      google_map(key = map_key ) %>%
+        add_polylines(data = df_route, polyline = "route")%>%
+        add_markers(data=c,lat='lat',lon='lng',mouse_over='address') 
+    }
   })
   
 })
