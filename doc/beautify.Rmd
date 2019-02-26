@@ -1,0 +1,29 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+
+library(shinythemes)
+library(shinyWidgets)
+restaurant <- read.csv("/Users/hyt/Desktop/Spring2019-Proj2-grp6-master/data/restaurant_NYC.csv",as.is = T)
+
+
+fluidPage(theme = shinytheme("slate"),
+          
+         setBackgroundImage(src = "https://res.cloudinary.com/trump-hotels/image/upload/c_fill,w_1440,ar_8:3/v1519329701/htwwgwknufwes5185ebe.jpg"),
+navbarPage("Restaurant",id = "nav",
+           tabPanel("Home",icon=icon("home"),
+                    div(class="home",
+                        align="center",
+                        br(),
+                        br(),
+                        br(),
+                        br(),
+                        br(),
+                        br(),
+                        br(),
+                        h3("Gourp6- Spring 2019",style="color:white;font-family: Times New Roman;font-size: 300%;font-weight: bold;")
+               )),
+### tabPanel("Interactive map",
+    div(class="outer",
