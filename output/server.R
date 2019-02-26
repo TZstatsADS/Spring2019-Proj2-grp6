@@ -104,6 +104,7 @@ shinyServer(function(input, output,session) {
     # t <- input$transit_mode
     p <- input$prefer
     
+<<<<<<< HEAD
     if(w == 'driving'){
       return(data.frame(origin = o, destination = d, mode = w ,avoid = a,stringsAsFactors = F))
     }else if(w == 'bus' | w == 'subway'){
@@ -111,6 +112,9 @@ shinyServer(function(input, output,session) {
     }else{
       return(data.frame(origin = o, destination = d,mode = w,stringsAsFactors = F))
     }
+=======
+    return(data.frame(origin = o, destination = d, mode = w, avoid = a, prefer = p, transit_mode=t ,stringsAsFactors = F))
+>>>>>>> ddef8e312e302eefce06287616dd94ef0104a76c
   })
   output$myMap <- renderGoogle_map({
     
