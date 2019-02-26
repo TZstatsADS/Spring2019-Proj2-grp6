@@ -131,6 +131,7 @@ shinyServer(function(input, output,session) {
     end$address<-df$destination
     c<-rbind(start,end)
     
+    
     if(input$way=='transit'){
       google_map(key = map_key ) %>%
         add_polylines(data = df_route, polyline = "route") %>%
@@ -151,6 +152,8 @@ shinyServer(function(input, output,session) {
         add_polylines(data = df_route, polyline = "route")%>%
         add_markers(data=c,lat='lat',lon='lng',mouse_over='address') 
     }
+    
+    
   })
   
 })

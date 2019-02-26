@@ -96,24 +96,28 @@ shinyServer(function(input, output,session) {
   
   df_route <- eventReactive(input$getRoute,{
     
-    print("getting route")
     
     o <- input$origin
     d <- input$destination
     w <- input$way
     a <- input$avoid
-    t <- input$transit_mode
+    # t <- input$transit_mode
     p <- input$prefer
     
-    return(data.frame(origin = o, destination = d, mode = w ,stringsAsFactors = F))
+    if(w == 'driving'){
+      return(data.frame(origin = o, destination = d, mode = w ,avoid = a,stringsAsFactors = F))
+    }else if(w == 'bus' | w == 'subway'){
+      return(data.frame(origin = o, destination = d, mode = 'transit',transit_mode = w,prefer = p,stringsAsFactors = F))
+    }else{
+      return(data.frame(origin = o, destination = d,mode = w,stringsAsFactors = F))
+    }
   })
   output$myMap <- renderGoogle_map({
     
     df <- df_route()
-    print(df)
     if(df$origin == "" | df$destination == "")
       return()
-    
+  
     res <- google_directions(
       key = api_key
       , origin = df$origin
@@ -137,26 +141,9 @@ shinyServer(function(input, output,session) {
     end$address<-df$destination
     c<-rbind(start,end)
     
-    if(input$way=='transit'){
-      google_map(key = map_key ) %>%
-        add_polylines(data = df_route, polyline = "route") %>%
-        add_transit() %>%
-        add_markers(data=c,lat='lat',lon='lng',mouse_over='address') 
-    }else if(input$way=='driving'){
-      google_map(key = map_key ) %>%
-        add_polylines(data = df_route, polyline = "route") %>%
-        add_traffic() %>%
-        add_markers(data=c,lat='lat',lon='lng',mouse_over='address') 
-    }else if(input$way=='bicycling'){
-      google_map(key = map_key ) %>%
-        add_polylines(data = df_route, polyline = "route") %>%
-        add_bicycling() %>%
-        add_markers(data=c,lat='lat',lon='lng',mouse_over='address') 
-    }else{
-      google_map(key = map_key ) %>%
-        add_polylines(data = df_route, polyline = "route")%>%
-        add_markers(data=c,lat='lat',lon='lng',mouse_over='address') 
-    }
+    google_map(key = map_key ) %>%
+      add_polylines(data = df_route, polyline = "route",stroke_colour = "#05066A")%>%
+      add_markers(data=c,lat='lat',lon='lng',mouse_over='address') 
   })
   
 })
