@@ -101,6 +101,9 @@ shinyServer(function(input, output,session) {
     o <- input$origin
     d <- input$destination
     w <- input$way
+    a <- input$avoid
+    t <- input$transit_mode
+    p <- input$prefer
     
     return(data.frame(origin = o, destination = d, mode = w ,stringsAsFactors = F))
   })
@@ -116,6 +119,9 @@ shinyServer(function(input, output,session) {
       , origin = df$origin
       , destination = df$destination
       , mode = df$mode 
+      , avoid = df$avoid
+      , transit_mode = df$transit_mode
+      , transit_routing_preference = df$prefer
       , alternatives = FALSE
     )
     
