@@ -12,18 +12,17 @@ library(shiny)
 library(googleway)
 library(shinyWidgets)
 library(shinydashboard)
-library(shinythemes)
 
 restaurant <- read.csv("/Users/Yunhao/Desktop/shiny_app/data/restaurant_NYC.csv",as.is = T)
 
-fluidPage(
-          
+
 navbarPage("Restaurant",id = "panels",
            tabPanel("Home",icon=icon("home"),
-                    setBackgroundImage(src = "https://res.cloudinary.com/trump-hotels/image/upload/c_fill,w_1440,ar_8:3/v1519329701/htwwgwknufwes5185ebe.jpg"),
                     
                     div(class="home",
                         align="center",
+                        setBackgroundImage(src = "https://res.cloudinary.com/trump-hotels/image/upload/c_fill,w_1440,ar_8:3/v1519329701/htwwgwknufwes5185ebe.jpg"),
+                        
                         br(),
                         br(),
                         br(),
@@ -79,17 +78,14 @@ navbarPage("Restaurant",id = "panels",
                                     width = 330, height = "auto",
                                     textInput(inputId = "origin", label = "Origin", value='Columbia University'),
                                     textInput(inputId = "destination", label = "Destination"),
-                                    selectInput(inputId = "way", label = "Transportation",choices = list("Driving" ="driving","Public Transportion" = "transit","Bicycling" = "bicycling","Walking"='walking')),
+                                    selectInput(inputId = "way", label = "Transportation",choices = list("Driving" ="driving","Bus" = "bus","Subway" = 'subway',"Bicycling" = "bicycling","Walking"='walking')),
+                                    selectInput(inputId = "avoid", label = "Avoid (Driving Only)",choices = list('Tolls'='tolls', 'Highways'='highways','Ferries'='ferries', 'Indoor'='indoor')),
+                                    # selectInput(inputId = "transit_mode", label = "Transit mode",choices = list('Bus'='bus', 'Train'='train','Subway'='subway')),
+                                    selectInput(inputId = "prefer", label = "Routing Preference (Non-Driving Only)",choices = list('Fewer transfers'='fewer_transfers', 'Less walking'= 'less_walking')),
+                                    actionButton(inputId = "getRoute", label = "Get Route")
                                     
-                                    selectInput(inputId = "avoid", label = "Avoid",choices = list('Tolls'='tolls', 'Highways'='highways','Ferries'='ferries', 'Indoor'='indoor')),
-                                    
-                                    selectInput(inputId = "transit_mode", label = "Transit mode",choices = list('Bus'='bus', 'Train'='train','Subway'='subway', 'Rail'='rail')),
-                                    selectInput(inputId = "prefer", label = "Transit routing preference",choices = list('Fewer transfers'='fewer_transfers', 'Less walking'= 'less_walking')),
-                                    
-                  
-                                    actionButton(inputId = "getRoute", label = "Get Rotue")
                       )
                     )
            )
-)       
+           
 )
