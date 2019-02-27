@@ -30,8 +30,8 @@ navbarPage("Safe Dining",id = "panels",
                         br(),
                         br(),
                         br(),
-                        h3("Group6 - Spring 2019",style="color:black;font-family: Times New Roman;font-size: 300%;font-weight: bold;"),
-                        h3("Project 2: Safe Dining", style = "color:black;font-family: Times New Roman;font-size: 300%;font-weight:bold;")
+                        h3("Group6 - Spring 2019",style="color:white;background-color:black;font-family: Times New Roman;font-size: 300%;font-weight: bold;"),
+                        h3("Project 2: Safe Dining", style = "color:white;background-color:black;font-family: Times New Roman;font-size: 300%;font-weight:bold;")
                       )),
            tabPanel("Interactive map",
                     div(class="outer",
