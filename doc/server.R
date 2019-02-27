@@ -16,6 +16,10 @@ library(shinydashboard)
 restaurant <- read.csv("restaurant_NYC.csv",as.is = T)
 crime <- read.csv("Crime_Hour.csv")
 
+#Read and Clean Rat file
+Rat<-read.csv("Rat_Sightings.csv")
+Rat<-Rat[complete.cases(Rat[,c(50,51)]),]
+
 # Marker
 crime_icon <- makeIcon(
   iconUrl = "https://upload.wikimedia.org/wikipedia/commons/c/c3/Maki2-danger-24.svg"
