@@ -13,7 +13,7 @@ library(googleway)
 library(shinyWidgets)
 library(shinydashboard)
 
-restaurant <- read.csv("/Users/Yunhao/Desktop/shiny_app/data/restaurant_NYC.csv",as.is = T)
+restaurant <- read.csv('restaurant_NYC.csv',as.is = T)
 
 
 navbarPage("Restaurant",id = "panels",

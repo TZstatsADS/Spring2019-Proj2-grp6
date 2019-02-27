@@ -13,8 +13,8 @@ library(googleway)
 library(shinyWidgets)
 library(shinydashboard)
 
-restaurant <- read.csv("/Users/Yunhao/Desktop/shiny_app/data/restaurant_NYC.csv",as.is = T)
-crime <- read.csv("/Users/Yunhao/Desktop/shiny_app/data/Crime_Hour.csv")
+restaurant <- read.csv("restaurant_NYC.csv",as.is = T)
+crime <- read.csv("Crime_Hour.csv")
 
 # Marker
 crime_icon <- makeIcon(

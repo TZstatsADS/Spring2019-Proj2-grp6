@@ -1,0 +1,12 @@
+name: app_final
+title: app_final
+username:
+account: project2-group6
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 741788
+bundleId: 1902200
+url: https://project2-group6.shinyapps.io/app_final/
+when: 1551225839.33404
+asMultiple: FALSE
+asStatic: FALSE
