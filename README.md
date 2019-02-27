@@ -32,4 +32,5 @@ The app includes functionality for choosing and filtering between:
 
 
   + Jason Shu: Searched for relevant data, content and grammar check, README file and code editing
+  + Andy Huang: Download restaurant data from yelp API & found recent crime data; UI design & improvement; coded 1st tab content(restaurant & crime); Final Debug 
 
