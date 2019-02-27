@@ -23,5 +23,8 @@ The app includes functionality for choosing and filtering between:
 + Preferences for travel, including type of transportation and preferred routes
 
 
++ **Contribution statement**: ([default](doc/a_note_on_contributions.md)) 
 
+
++ Jason Shu: Searched for relevant data, content and grammar check, README file and code editing
 
