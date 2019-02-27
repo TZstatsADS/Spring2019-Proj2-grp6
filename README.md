@@ -30,7 +30,7 @@ The app includes functionality for choosing and filtering between:
 ---
 + **Contribution statement**: ([default](doc/a_note_on_contributions.md)) 
 
-
   + Jason Shu: Searched for relevant data, content and grammar check, README file and code editing
   + Andy Huang: Download restaurant data from yelp API & found recent crime data; UI design & improvement; coded 1st tab content(restaurant & crime); Final Debug 
+  + Xi Yang: develope and improve the navigation tab (the second tab) using google map API and googleway package; UI design & improvement
 
