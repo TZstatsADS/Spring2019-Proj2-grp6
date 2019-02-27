@@ -24,4 +24,3 @@ The app includes functionality for choosing and filtering between:
 
 
 
-[APP Link](http://project2-group6.shinyapps.io/app_final)
