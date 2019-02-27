@@ -30,7 +30,7 @@ shinyServer(function(input, output,session) {
   
   # TAB 1
   output$map <- renderLeaflet({
-    leaflet() %>%
+    leaflet(Boundaries) %>%
       addProviderTiles(providers$Esri.WorldTopoMap,
                        options = providerTileOptions(noWrap = TRUE)) %>%
       setView(lng = -73.985664, lat = 40.748440, zoom = 12) %>%
