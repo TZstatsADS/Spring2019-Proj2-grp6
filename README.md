@@ -1,47 +1,36 @@
 # Project 2: Shiny App Development Version 2.0
 
-### [Project Description](doc/project2_desc.md)
+## **Safe Dining**: http://project2-group6.shinyapps.io/app_final
++ Yuting He
++ Andy Huang
++ Wensong Qiao
++ Jason Shu
++ Xi Yang
 
-![screenshot](doc/screenshot2.png)
+![screenshot](lib/proj2.PNG)
+![screenshot](lib/proj2.2.PNG)
 
-In this second project of GR5243 Applied Data Science, we develop a version 2.0 of an *Exploratory Data Analysis and Visualization* shiny app on a topic of your choice using [NYC Open Data](https://opendata.cityofnewyork.us/) or U.S. government open data released on the [data.gov](https://data.gov/) website. See [Project 2 Description](doc/project2_desc.md) for more details.  
+Diners in NYC deserve to know the safety of their choice of restaurant, both externally with regards to the crime rate of surrounding neighborhoods, as well as internally concerning how safe the food is to eat. In Project 2, our group combines multiple datasets and utilities in order to provide this information to a consumer who would like to pick from a restaurant. 
 
-The **learning goals** for this project is:
+The app includes functionality for choosing and filtering between:
 
-- business intelligence for data science
-- study legacy codes and further development
-- data cleaning
-- data visualization
-- systems development/design life cycle
-- shiny app/shiny server
++ Restaurant Category/Cuisine
++ Price
++ Online Rating 
++ Crime Rate (At specific time of arrival/departure)
++ Heat Map of rat activity
++ Removal of restaurants that have had food safety complaints
++ Manual entering of restaurant name
++ Separate tab that provides directions to the restaurant of your choosing
++ Hyperlinks directing to the google search for the selected restaurant
++ Preferences for travel, including type of transportation and preferred routes
 
-*The above general statement about project 2 can be removed once you are finished with your project. It is optional.
 
-## Project Title Lorem ipsum dolor sit amet
-Term: Spring 2019
 
-+ Team #
-+ **Projec title**: + Team members
-	+ team member 1
-	+ team member 2
-	+ team member 3
-	+ team member 4
-	+ team member 5
+---
++ **Contribution statement**: ([default](doc/a_note_on_contributions.md)) 
 
-+ **Project summary**: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
-+ **Contribution statement**: ([default](doc/a_note_on_contributions.md)) All team members contributed equally in all stages of this project. All team members approve our work presented in this GitHub repository including this contributions statement. 
-
-Following [suggestions](http://nicercode.github.io/blog/2013-04-05-projects/) by [RICH FITZJOHN](http://nicercode.github.io/about/#Team) (@richfitz). This folder is orgarnized as follows.
-
-```
-proj/
-├── app/
-├── lib/
-├── data/
-├── doc/
-└── output/
-```
-
-Please see each subfolder for a README file.
+  + Jason Shu: Searched for relevant data, content and grammar check, README file and code editing
+  + Andy Huang: Download restaurant data from yelp API & found recent crime data; UI design & improvement; coded 1st tab content(restaurant & crime); Final Debug 
 

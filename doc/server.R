@@ -13,8 +13,12 @@ library(googleway)
 library(shinyWidgets)
 library(shinydashboard)
 
-restaurant <- read.csv("/Users/Yunhao/Desktop/shiny_app/data/restaurant_NYC.csv",as.is = T)
-crime <- read.csv("/Users/Yunhao/Desktop/shiny_app/data/Crime_Hour.csv")
+restaurant <- read.csv("restaurant_NYC.csv",as.is = T)
+crime <- read.csv("Crime_Hour.csv")
+
+#Read and Clean Rat file
+Rat<-read.csv("Rat_Sightings.csv")
+Rat<-Rat[complete.cases(Rat[,c(50,51)]),]
 
 # Marker
 crime_icon <- makeIcon(
@@ -31,7 +35,23 @@ shinyServer(function(input, output,session) {
                        options = providerTileOptions(noWrap = TRUE)) %>%
       setView(lng = -73.985664, lat = 40.748440, zoom = 12) %>%
       addLayersControl(position = "topleft", overlayGroups = c("Crime","Restaurants")) %>%
-      hideGroup("Crime")
+      hideGroup("Crime")%>%
+      addPolygons(weight = 3,
+                  opacity = 1,
+                  color = "grey",
+                  dashArray = "3",
+                  fillOpacity =0.03, 
+                  highlight = highlightOptions(weight = 5,
+                                               color = "#666",
+                                               dashArray = "",
+                                               fillOpacity = 0.7,
+                                               bringToFront = TRUE),group="Borough")%>%
+      addHeatmap(data=Rat,lng = ~ as.numeric(Longitude), lat = ~as.numeric(Latitude),
+                 blur = 25, max = 0.01, radius = 15 ,group = "Rat Distribution")%>%
+      addHeatmap(data=crime,lng = ~ Longitude, lat = ~Latitude,
+                 blur = 23, max = 0.05, radius = 15,group = "Crime Distribution" )%>%
+      addLayersControl(overlayGroups = c("Borough", "Crime Distribution","Rat Distribution"),options = layersControlOptions(collapsed = FALSE),position = "topleft")
+      
   })
   
   observe({
