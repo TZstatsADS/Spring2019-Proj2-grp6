@@ -69,7 +69,7 @@ navbarPage("Safe Dining",id = "panels",
                         
                     )
            ),
-           tabPanel("Direction",
+           tabPanel("Directions",
                     div(
                       class = "Outer",
                       google_mapOutput("myMap", width = "100%", height = "600px"),
