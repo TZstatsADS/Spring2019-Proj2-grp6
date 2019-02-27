@@ -7,8 +7,8 @@
 + Jason Shu
 + Xi Yang
 
-![screenshot](lib/proj2.png)
-![screenshot](lib/proj2.2.png)
+![screenshot](lib/proj2.PNG)
+![screenshot](lib/proj2.2.PNG)
 
 Diners in NYC deserve to know the safety of their choice of restaurant, both externally with regards to the crime rate of surrounding neighborhoods, as well as internally concerning how safe the food is to eat. In Project 2, our group combines multiple datasets and utilities in order to provide this information to a consumer who would like to pick from a restaurant. 
 
