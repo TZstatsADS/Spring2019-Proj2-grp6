@@ -1,6 +1,7 @@
 # Project 2: Shiny App Development Version 2.0
 
 ## **Safe Dining**: http://project2-group6.shinyapps.io/app_final
+Alternate website： https://wensong.shinyapps.io/data/
 + Yuting He
 + Andy Huang
 + Wensong Qiao
