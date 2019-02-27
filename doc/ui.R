@@ -12,6 +12,11 @@ library(shiny)
 library(googleway)
 library(shinyWidgets)
 library(shinydashboard)
+library(leaflet.extras)
+
+file<-paste(getwd(), "/Boundaries1.geojson", sep = '')
+Boundaries<- geojsonio::geojson_read(file, what = "sp")
+class(Boundaries)
 
 restaurant <- read.csv('restaurant_NYC.csv',as.is = T)
 
