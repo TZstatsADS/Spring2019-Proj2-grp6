@@ -24,7 +24,7 @@ The app includes functionality for choosing and filtering between:
 
 
 
-
+---
 + **Contribution statement**: ([default](doc/a_note_on_contributions.md)) 
 
 
