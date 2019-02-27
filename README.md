@@ -15,7 +15,7 @@ The app includes functionality for choosing and filtering between:
 + Price
 + Online Rating 
 + Crime Rate (At specific time of arrival/departure)
-+ Heat Map of crime activity
++ Heat Map of rat activity
 + Removal of restaurants that have had food safety complaints
 + Manual entering of restaurant name
 + Separate tab that provides directions to the restaurant of your choosing
