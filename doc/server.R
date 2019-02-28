@@ -111,8 +111,8 @@ shinyServer(function(input, output,session) {
   
   # TAB 2
   
-  api_key <- "AIzaSyCIbMSl4ey6gxtalI71vGBOjhKXVcCjOLY"
-  map_key <- "AIzaSyCIbMSl4ey6gxtalI71vGBOjhKXVcCjOLY"
+  api_key <- APIKEY
+  map_key <- APIKEY
   
   df_route <- eventReactive(input$getRoute,{
     
